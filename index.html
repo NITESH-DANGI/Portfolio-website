@@ -2066,16 +2066,23 @@
       background: rgba(212, 255, 0, 0.08);
     }
 
+    /* ── MASONRY GALLERY (Pinterest-style) ── */
     .gallery-grid {
       flex: 1;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-auto-rows: min-content;
-      row-gap: 32px;
-      column-gap: 24px;
+      column-count: 3;
+      column-gap: 20px;
       padding: 40px;
       overflow-y: auto;
-      align-content: start;
+    }
+
+    @media (min-width: 1400px) {
+      .gallery-grid { column-count: 4; }
+    }
+    @media (max-width: 1100px) {
+      .gallery-grid { column-count: 2; }
+    }
+    @media (max-width: 600px) {
+      .gallery-grid { column-count: 1; padding: 20px; }
     }
 
     .gallery-grid::-webkit-scrollbar {
@@ -2086,32 +2093,78 @@
       background: var(--accent);
     }
 
+    /* ── Gallery Item (masonry card) ── */
     .gallery-item {
       position: relative;
-      border-radius: 12px;
+      break-inside: avoid;
+      margin-bottom: 20px;
+      border-radius: 16px;
       overflow: hidden;
       cursor: pointer;
-      height: auto;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      opacity: 0;
+      transform: translateY(24px) scale(0.97);
+      animation: galleryFadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      transition: transform 0.4s cubic-bezier(.4, 0, .2, 1), box-shadow 0.4s ease, border-color 0.3s ease;
     }
 
+    .gallery-item:hover {
+      transform: translateY(-4px) scale(1.015);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 0 32px rgba(212, 255, 0, 0.06);
+      border-color: rgba(212, 255, 0, 0.2);
+    }
+
+    @keyframes galleryFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* ── Skeleton Loader ── */
+    .gallery-item .gallery-skeleton {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, rgba(255,255,255,0.03) 8%, rgba(255,255,255,0.07) 18%, rgba(255,255,255,0.03) 33%);
+      background-size: 200% 100%;
+      animation: skeletonShimmer 1.4s ease-in-out infinite;
+      z-index: 2;
+      border-radius: 16px;
+      transition: opacity 0.4s ease;
+    }
+
+    .gallery-item .gallery-skeleton.loaded {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @keyframes skeletonShimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    /* ── Image ── */
     .gallery-item img {
       width: 100%;
       height: auto;
       display: block;
       object-fit: contain;
-      transition: transform 0.45s cubic-bezier(.4, 0, .2, 1), filter 0.45s ease;
+      border-radius: 16px;
+      transition: transform 0.5s cubic-bezier(.4, 0, .2, 1), filter 0.5s ease;
     }
 
     .gallery-item:hover img {
-      transform: scale(1.06);
-      filter: brightness(1.1);
+      transform: scale(1.04);
+      filter: brightness(1.08);
     }
 
+    /* ── Accent border glow on hover ── */
     .gallery-item::after {
       content: '';
       position: absolute;
       inset: 0;
-      border-radius: 12px;
+      border-radius: 16px;
       border: 1.5px solid transparent;
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
       pointer-events: none;
@@ -2119,24 +2172,26 @@
 
     .gallery-item:hover::after {
       border-color: var(--accent);
-      box-shadow: 0 0 24px rgba(212, 255, 0, 0.1);
+      box-shadow: 0 0 28px rgba(212, 255, 0, 0.12);
     }
 
+    /* ── Label ── */
     .gallery-item-label {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      padding: 12px 16px;
-      background: linear-gradient(transparent, rgba(6, 6, 6, 0.85));
+      padding: 16px 18px;
+      background: linear-gradient(transparent, rgba(6, 6, 6, 0.88));
       font-family: 'DM Mono', monospace;
       font-size: 0.62rem;
       color: var(--muted2);
       letter-spacing: 0.08em;
       text-transform: uppercase;
       opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
+      transform: translateY(10px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      border-radius: 0 0 16px 16px;
     }
 
     .gallery-item:hover .gallery-item-label {
@@ -2931,12 +2986,27 @@
       background: rgba(139, 119, 64, 0.08);
     }
 
+    [data-theme="light"] .gallery-item {
+      background: rgba(0, 0, 0, 0.02);
+      border-color: rgba(0, 0, 0, 0.06);
+    }
+
+    [data-theme="light"] .gallery-item:hover {
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1), 0 0 32px rgba(139, 119, 64, 0.04);
+      border-color: rgba(139, 119, 64, 0.2);
+    }
+
     [data-theme="light"] .gallery-item:hover::after {
       box-shadow: 0 0 24px rgba(139, 119, 64, 0.08);
     }
 
+    [data-theme="light"] .gallery-item .gallery-skeleton {
+      background: linear-gradient(110deg, rgba(0,0,0,0.03) 8%, rgba(0,0,0,0.06) 18%, rgba(0,0,0,0.03) 33%);
+      background-size: 200% 100%;
+    }
+
     [data-theme="light"] .gallery-item-label {
-      background: linear-gradient(transparent, rgba(250, 248, 245, 0.85));
+      background: linear-gradient(transparent, rgba(250, 248, 245, 0.88));
     }
 
     /* Reviews */
@@ -3129,7 +3199,7 @@
           alt="MongoDB">MongoDB</span>
       <span class="marquee-item"><img
           src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
-          alt="Express.js">Express.js</span>
+          alt="Express.js" style="color: #555;">Express.js</span>
       <span class="marquee-item"><img
           src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
           alt="Next.js">Next.js</span>
@@ -3647,13 +3717,15 @@
           <h3 class="form-title">Connect with us</h3>
           <div class="dev-info">
             <span class="dev-name">Pranit Akash</span>
-            <a href="tel:+918888888888" class="info-link">+91 88888 88888</a>
-            <a href="https://instagram.com/pranitakash" class="info-link">@pranitakash</a>
+            <a href="tel:+918888888888" class="info-link">+91 7982676572</a>
+            <a href="https://www.instagram.com/pranit_akash/?hl=en" class="info-link">pranit_akash</a>
+            <a href="pranit.dot.akash@gmail.com" class="info-link">pranit.dot.akash@gmail.com</a>
           </div>
           <div class="dev-info">
             <span class="dev-name">Nitesh Dangi</span>
-            <a href="tel:+917777777777" class="info-link">+91 77777 77777</a>
-            <a href="https://instagram.com/niteshdangi" class="info-link">@niteshdangi</a>
+            <a href="tel:+917777777777" class="info-link">+91 6398557744</a>
+            <a href="https://www.instagram.com/nitesh_up.__/?hl=en" class="info-link">nitesh_up.__</a>
+            <a href="danginitesh21@gmail.com" class="info-link">danginitesh21@gmai.com</a>
           </div>
           <p class="info-sub">We usually respond within 24 hours. Let's build something epic together.</p>
         </div>
@@ -4423,18 +4495,34 @@
         carouselInterval = setInterval(nextSlide, 3500);
       }
 
-      // ── CAROUSEL CLICK → GALLERY ──
+      // ── CAROUSEL CLICK → GALLERY (Pinterest masonry) ──
       carouselContainer.addEventListener('click', () => {
         if (!currentData) return;
         if (carouselInterval) clearInterval(carouselInterval);
 
         galleryTitle.textContent = currentData.title + ' — Screenshots';
-        galleryGrid.innerHTML = currentData.screenshots.map((url, i) =>
-          `<div class="gallery-item">
+
+        // Build masonry items with skeleton loaders + stagger delays
+        galleryGrid.innerHTML = currentData.screenshots.map((url, i) => {
+          const delay = (i * 0.07).toFixed(2);
+          return `<div class="gallery-item" style="animation-delay:${delay}s">
+            <div class="gallery-skeleton"></div>
             <img src="${url}" alt="${currentData.ssLabels[i]}" loading="lazy">
             <div class="gallery-item-label">${currentData.ssLabels[i]}</div>
-          </div>`
-        ).join('');
+          </div>`;
+        }).join('');
+
+        // Dismiss skeleton when each image loads
+        galleryGrid.querySelectorAll('.gallery-item').forEach(item => {
+          const img = item.querySelector('img');
+          const skel = item.querySelector('.gallery-skeleton');
+          if (img.complete && img.naturalHeight > 0) {
+            skel.classList.add('loaded');
+          } else {
+            img.addEventListener('load', () => skel.classList.add('loaded'), { once: true });
+            img.addEventListener('error', () => skel.classList.add('loaded'), { once: true });
+          }
+        });
 
         galleryOverlay.classList.add('visible');
       });
