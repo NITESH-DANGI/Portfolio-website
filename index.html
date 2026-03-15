@@ -2719,7 +2719,7 @@
       backdrop-filter: blur(24px);
       overflow: hidden;
       display: grid;
-      grid-template-columns: 2.2fr 1fr;
+      grid-template-columns: 1fr;
     }
 
     @media (max-width: 950px) {
@@ -2730,7 +2730,7 @@
 
     /* ── BOOKING WIDGET (Cal.com style) ── */
     .booking-widget {
-      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
       display: flex;
       flex-direction: column;
     }
@@ -4552,164 +4552,26 @@
     <p class="cta-sub reveal">Have an idea? Need a full-stack team who can own the whole product? Let's talk.</p>
     <div class="contact-container">
       <div class="contact-card">
-        <!-- BOOKING WIDGET -->
+        <!-- CAL.COM BOOKING WIDGET -->
         <div class="booking-widget">
-          <!-- Step 1: Select date & time -->
-          <div class="booking-step-1" id="booking-step-1">
-            <!-- Left: Meeting info -->
-            <div class="booking-info">
-              <div class="booking-brand">
-                <div class="booking-brand-icon">d.</div>
-                <span class="booking-brand-name">dev.</span>
-              </div>
-              <div class="booking-call-title">Intro Call</div>
-              <p class="booking-call-desc">An intro call to discuss your project scope, timeline, and what working
-                together could look like.</p>
-              <div class="booking-meta">
-                <div class="booking-meta-item">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                  </svg>
-                  <span>20 min</span>
-                </div>
-                <div class="booking-meta-item">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M15 10l-4 4l6 6l4-16l-18 7l4 2l2 6l3-4" />
-                  </svg>
-                  <span>Google Meet</span>
-                </div>
-                <div class="booking-meta-item">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="2" y1="12" x2="22" y2="12" />
-                    <path
-                      d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                  </svg>
-                  <span>Asia/Kolkata</span>
-                </div>
-              </div>
-            </div>
-            <!-- Middle: Calendar -->
-            <div class="booking-calendar">
-              <div class="cal-month-header">
-                <button class="cal-nav-btn" id="cal-prev" aria-label="Previous month">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="15 18 9 12 15 6" />
-                  </svg>
-                </button>
-                <span class="cal-month-title" id="cal-month-title"></span>
-                <button class="cal-nav-btn" id="cal-next" aria-label="Next month">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="9 18 15 12 9 6" />
-                  </svg>
-                </button>
-              </div>
-              <div class="cal-grid" id="cal-grid"></div>
-            </div>
-            <!-- Right: Time slots -->
-            <div class="booking-times" id="booking-times">
-              <div class="booking-times-title" id="booking-times-title"></div>
-              <div class="booking-times-list" id="booking-times-list"></div>
-            </div>
-          </div>
+          <!-- Cal inline embed code begins -->
+          <div style="width:100%;height:100%;overflow:scroll;min-height:550px;" id="my-cal-inline-30min"></div>
+          <script type="text/javascript">
+            (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+            Cal("init", "30min", {origin:"https://app.cal.com"});
 
-          <!-- Step 2: Booking form -->
-          <div class="booking-step-2" id="booking-step-2">
-            <div class="booking-info">
-              <div class="booking-brand">
-                <div class="booking-brand-icon">d.</div>
-                <span class="booking-brand-name">dev.</span>
-              </div>
-              <div class="booking-call-title">Intro Call</div>
-              <div class="booking-meta" style="margin-top:16px">
-                <div class="booking-summary-item" id="bf-summary-date">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                    <line x1="16" y1="2" x2="16" y2="6" />
-                    <line x1="8" y1="2" x2="8" y2="6" />
-                    <line x1="3" y1="10" x2="21" y2="10" />
-                  </svg>
-                  <span></span>
-                </div>
-                <div class="booking-meta-item">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                  </svg>
-                  <span>20 min</span>
-                </div>
-                <div class="booking-meta-item">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M15 10l-4 4l6 6l4-16l-18 7l4 2l2 6l3-4" />
-                  </svg>
-                  <span>Google Meet</span>
-                </div>
-                <div class="booking-meta-item">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="2" y1="12" x2="22" y2="12" />
-                    <path
-                      d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                  </svg>
-                  <span>Asia/Kolkata</span>
-                </div>
-              </div>
-            </div>
-            <div class="booking-form-panel">
-              <h3>Your details</h3>
-              <div class="booking-form" id="booking-form">
-                <div class="bf-group">
-                  <label>Your name *</label>
-                  <input type="text" id="bf-name" required>
-                </div>
-                <div class="bf-group">
-                  <label>Email address *</label>
-                  <input type="email" id="bf-email" required>
-                </div>
-                <div class="bf-group">
-                  <label>How can we help? *</label>
-                  <select id="bf-help">
-                    <option value="" disabled selected>Select an option</option>
-                    <option value="new-project">New project from scratch</option>
-                    <option value="redesign">Redesign / rebuild existing app</option>
-                    <option value="mvp">MVP development</option>
-                    <option value="api">API / backend development</option>
-                    <option value="consulting">Technical consulting</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-                <div class="bf-group">
-                  <label>Estimated budget *</label>
-                  <select id="bf-budget">
-                    <option value="" disabled selected>Select a range</option>
-                    <option value="<5k">Under ₹50,000</option>
-                    <option value="5k-15k">₹50,000 – ₹1.5L</option>
-                    <option value="15k-50k">₹1.5L – ₹5L</option>
-                    <option value="50k+">₹5L+</option>
-                  </select>
-                </div>
-                <div class="bf-group">
-                  <label>Timeline</label>
-                  <select id="bf-timeline">
-                    <option value="" disabled selected>When do you need it?</option>
-                    <option value="asap">ASAP</option>
-                    <option value="1-2w">1–2 weeks</option>
-                    <option value="1m">~1 month</option>
-                    <option value="flexible">Flexible</option>
-                  </select>
-                </div>
-                <div class="bf-group">
-                  <label>Additional project details</label>
-                  <textarea id="bf-details" placeholder="Add project details or notes..." rows="3"></textarea>
-                </div>
-                <div class="bf-actions">
-                  <button class="bf-back-btn" id="bf-back">Back</button>
-                  <button class="bf-confirm-btn" id="bf-confirm">Confirm</button>
-                </div>
-              </div>
-            </div>
-          </div>
+            // Detect initial theme
+            var calInitialTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+
+            Cal.ns["30min"]("inline", {
+              elementOrSelector:"#my-cal-inline-30min",
+              config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":calInitialTheme},
+              calLink: "dev-dot/30min",
+            });
+
+            Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view","theme":calInitialTheme});
+          </script>
+          <!-- Cal inline embed code ends -->
         </div>
 
         <!-- CONNECT WITH US -->
@@ -4814,164 +4676,6 @@
       });
     })();
 
-    /* ─── CAL.COM-STYLE BOOKING WIDGET ─── */
-    (function initBookingWidget() {
-      const grid = document.getElementById('cal-grid');
-      const monthTitle = document.getElementById('cal-month-title');
-      const prevBtn = document.getElementById('cal-prev');
-      const nextBtn = document.getElementById('cal-next');
-      const timesPanel = document.getElementById('booking-times');
-      const timesTitle = document.getElementById('booking-times-title');
-      const timesList = document.getElementById('booking-times-list');
-      const step1 = document.getElementById('booking-step-1');
-      const step2 = document.getElementById('booking-step-2');
-      const backBtn = document.getElementById('bf-back');
-      const confirmBtn = document.getElementById('bf-confirm');
-      const summaryDate = document.getElementById('bf-summary-date');
-      if (!grid || !monthTitle) return;
-
-      const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-      const DAYS_SHORT = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-      const DAYS_LABEL = ['MO', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'];
-      const TIME_SLOTS = ['09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00'];
-
-      const today = new Date();
-      let currentMonth = today.getMonth();
-      let currentYear = today.getFullYear();
-      let selectedDate = null;
-      let selectedTime = null;
-
-      function renderCalendar() {
-        grid.innerHTML = '';
-        monthTitle.textContent = MONTHS[currentMonth] + ' ' + currentYear;
-
-        // Day labels (Mon first)
-        DAYS_LABEL.forEach(d => {
-          const label = document.createElement('div');
-          label.className = 'cal-day-label';
-          label.textContent = d;
-          grid.appendChild(label);
-        });
-
-        const firstDay = new Date(currentYear, currentMonth, 1).getDay();
-        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-
-        // Adjust for Monday start (0=Mon...6=Sun)
-        const startOffset = (firstDay + 6) % 7;
-
-        for (let i = 0; i < startOffset; i++) {
-          const empty = document.createElement('div');
-          empty.className = 'cal-day cal-day--empty';
-          grid.appendChild(empty);
-        }
-
-        const todayNoTime = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-
-        for (let d = 1; d <= daysInMonth; d++) {
-          const cell = document.createElement('div');
-          cell.className = 'cal-day';
-          cell.textContent = d;
-          const cellDate = new Date(currentYear, currentMonth, d);
-
-          if (cellDate < todayNoTime) {
-            cell.classList.add('cal-day--past');
-          } else {
-            if (cellDate.getTime() === todayNoTime.getTime()) cell.classList.add('cal-day--today');
-            if (selectedDate && cellDate.getTime() === selectedDate.getTime()) cell.classList.add('cal-day--selected');
-            cell.addEventListener('click', () => selectDate(cellDate));
-          }
-          grid.appendChild(cell);
-        }
-      }
-
-      function selectDate(date) {
-        selectedDate = date;
-        selectedTime = null;
-        renderCalendar();
-        showTimeSlots(date);
-      }
-
-      function showTimeSlots(date) {
-        timesPanel.classList.add('visible');
-        const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        timesTitle.textContent = dayNames[date.getDay()] + ' ' + date.getDate();
-        timesList.innerHTML = '';
-        TIME_SLOTS.forEach(t => {
-          const slot = document.createElement('div');
-          slot.className = 'cal-time-slot';
-          if (selectedTime === t) slot.classList.add('cal-time-slot--selected');
-          slot.textContent = t;
-          slot.addEventListener('click', () => {
-            selectedTime = t;
-            showTimeSlots(date);
-            // Show step 2 after selecting a time
-            goToStep2();
-          });
-          timesList.appendChild(slot);
-        });
-      }
-
-      function goToStep2() {
-        step1.classList.add('hidden');
-        step2.classList.add('active');
-        // Update the summary in step 2
-        const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        const dateStr = dayNames[selectedDate.getDay()] + ', ' + MONTHS[selectedDate.getMonth()] + ' ' + selectedDate.getDate() + ', ' + selectedDate.getFullYear();
-        const endMinutes = parseInt(selectedTime.split(':')[0]) * 60 + parseInt(selectedTime.split(':')[1]) + 20;
-        const endH = String(Math.floor(endMinutes / 60)).padStart(2, '0');
-        const endM = String(endMinutes % 60).padStart(2, '0');
-        summaryDate.querySelector('span').textContent = dateStr + '\n' + selectedTime + ' – ' + endH + ':' + endM;
-      }
-
-      function goToStep1() {
-        step2.classList.remove('active');
-        step1.classList.remove('hidden');
-      }
-
-      prevBtn.addEventListener('click', () => {
-        currentMonth--;
-        if (currentMonth < 0) { currentMonth = 11; currentYear--; }
-        renderCalendar();
-      });
-
-      nextBtn.addEventListener('click', () => {
-        currentMonth++;
-        if (currentMonth > 11) { currentMonth = 0; currentYear++; }
-        renderCalendar();
-      });
-
-      backBtn.addEventListener('click', () => goToStep1());
-
-      confirmBtn.addEventListener('click', () => {
-        const name = document.getElementById('bf-name').value;
-        const email = document.getElementById('bf-email').value;
-        if (!name || !email) {
-          alert('Please fill in your name and email.');
-          return;
-        }
-        confirmBtn.textContent = 'Meeting Booked! ✓';
-        confirmBtn.style.background = '#28c840';
-        confirmBtn.disabled = true;
-        setTimeout(() => {
-          selectedDate = null;
-          selectedTime = null;
-          timesPanel.classList.remove('visible');
-          confirmBtn.style.background = '';
-          confirmBtn.disabled = false;
-          confirmBtn.textContent = 'Confirm';
-          document.getElementById('bf-name').value = '';
-          document.getElementById('bf-email').value = '';
-          document.getElementById('bf-help').selectedIndex = 0;
-          document.getElementById('bf-budget').selectedIndex = 0;
-          document.getElementById('bf-timeline').selectedIndex = 0;
-          document.getElementById('bf-details').value = '';
-          goToStep1();
-          renderCalendar();
-        }, 3000);
-      });
-
-      renderCalendar();
-    })();
 
 
     /* ─── SMOOTH CURSOR (Magic UI SVG, spring-physics) ─── */
@@ -5074,6 +4778,12 @@
 
         const isCurrentlyLight = document.documentElement.getAttribute('data-theme') === 'light';
         const targetTheme = isCurrentlyLight ? 'dark' : 'light';
+
+        // Update Cal.com embed theme
+        if (window.Cal && Cal.ns && Cal.ns['30min']) {
+          Cal.ns['30min']('ui', {"theme": targetTheme});
+        }
+
         // Old theme's background (for the overlay)
         const oldBg = isCurrentlyLight ? '#FAF8F5' : '#060606';
 
